@@ -1,0 +1,15 @@
+How to print QByteArray
+-----------------------------------------------------------
+    QString s;
+    uchar c;
+    
+    for ( int i=0 ; i < data.size() ; i++ ){
+        c = data[i];
+        if ( c >= 0x20 && c <= 126 ) {
+            s.append(c);
+        } else {
+            s.append(QString("<%1>").arg(c, 2, 16, QChar('0')));
+        }
+    }
+    
+    qDebug()<<"Implement here : "<<s;
