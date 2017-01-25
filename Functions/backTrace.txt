@@ -1,0 +1,86 @@
+For Linux and I believe Mac OS X, if you're using gcc, or any compiler that uses glibc, you can use the backtrace() functions in execinfo.h to print a stacktrace and exit gracefully when you get a segmentation fault. Documentation can be found in the libc manual.
+
+Here's an example program that installs a SIGSEGV handler and prints a stacktrace to stderr when it segfaults. The baz() function here causes the segfault that triggers the handler:
+
+#include <stdio.h>
+#include <execinfo.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+
+void handler(int sig) {
+  void *array[10];
+  size_t size;
+
+  // get void*'s for all entries on the stack
+  size = backtrace(array, 10);
+
+  // print out all the frames to stderr
+  fprintf(stderr, "Error: signal %d:\n", sig);
+  backtrace_symbols_fd(array, size, STDERR_FILENO);
+  exit(1);
+}
+
+void baz() {
+ int *foo = (int*)-1; // make a bad pointer
+  printf("%d\n", *foo);       // causes segfault
+}
+
+void bar() { baz(); }
+void foo() { bar(); }
+
+
+int main(int argc, char **argv) {
+  signal(SIGSEGV, handler);   // install our handler
+  foo(); // this will call foo, bar, and baz.  baz segfaults.
+}
+
+
+Compiling with -g -rdynamic gets you symbol info in your output, which glibc can use to make a nice stacktrace:
+
+$ gcc -g -rdynamic ./test.c -o test
+
+
+Windows
+----------
+#include <iostream>
+#include <csignal>
+#include <Windows.h>
+
+using namespace std;
+
+void signalHandler( int signum ) {
+   cout << "Interrupt signal (" << signum << ") received.\n";
+
+   // cleanup and close up stuff here
+   // terminate program
+
+   exit(signum);
+
+}
+
+int main () {
+   // register signal SIGINT and signal handler
+   signal(SIGINT, signalHandler);
+   signal(SIGILL , signalHandler);
+   signal(SIGFPE, signalHandler);
+   signal(SIGSEGV, signalHandler);
+   signal(SIGTERM, signalHandler);
+   signal(SIGBREAK, signalHandler);
+   signal(SIGABRT, signalHandler);
+
+
+   cout << "Start " << endl;
+   int *a;
+   delete a;
+
+   cout << "End" << endl;
+
+   while(1){
+      cout << "Going to sleep...." << endl;
+      Sleep(100);
+   }
+
+   return 0;
+}
