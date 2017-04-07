@@ -1,0 +1,75 @@
+/*
+  Find substring's alphabet in message.TechGIG
+*/
+
+#include <iostream>
+#include <string>
+int main(int argc, char *argv[])
+{
+    int input1 = 4, input2 = 11;
+    char* input3 = "cAda";
+    char* input4 = "AbrAcadAbRa";
+
+    int bI = 0;
+    int appCount = 0;
+    std::string temp;
+
+    for(0; bI < (input2 - input1); bI++){
+
+        temp = std::string(input3);
+
+        int i = 0;
+        for(0; i < input1; i++)
+        {
+            int k = 0;
+            for(0; k < temp.length(); k++){
+                if(temp[k] == input4[bI+i]){
+                    temp.erase(temp.begin() +k);
+                    break;
+                }
+            }
+        }
+
+        std::cout<<input4[bI]<<" remain = "<<temp.c_str()<<std::endl;
+
+        if(temp.length() == 0){
+            appCount++;
+        }
+    }
+
+    std::cout<<"-----------"<<std::endl;
+    std::cout<<"appCount = "<<appCount<<" "<<input3<<"- -"<<input4<<std::endl;
+    return 0;
+}
+
+/*
+ Jumping monkey problem
+*/
+
+ int input1 = 4;
+    int input2 = 1;
+    int input3_size = 5;
+    int input3[5] = {6, 9, 11, 4, 5};
+
+    int tHeight = 0;
+    for(int i = 0; i < input3_size; i++){
+        tHeight += input3[i];
+    }
+
+    int tJump = 0;
+    int cHeight = 0;
+
+    cHeight += input1;
+    tJump++;
+
+    while(cHeight < tHeight)
+    {
+        cHeight -= input2;
+        cHeight += input1;
+        tJump++;
+    }
+
+    std::cout<<" "<<tJump<<std::endl;
+
+
+
