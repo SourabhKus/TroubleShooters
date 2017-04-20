@@ -1,0 +1,52 @@
+
+QPointer: 
+---------
+QPointer can only point to QObject instances. It will be automatically set to nullptr if the pointed to object is destroyed. 
+It is a weak pointer specialized for QObject.
+QObject *obj = new QObject;
+QPointer<QObject> pObj(obj);
+delete obj;
+Q_ASSERT(pObj.isNull()); // pObj will be nullptr now
+
+QSharedPointer
+--------------
+A reference-counted pointer. The actual object will only be deleted, when all shared pointers are destroyed. 
+Equivalent to std::shared_ptr.
+int *pI = new int;
+QSharedPointer<int> pI1(pI);
+QSharedPointer<int> pI2 = pI1;
+pI1.clear();
+// pI2 is still pointing to pI, so it is not deleted
+pI2.clear();
+// No shared pointers anymore, pI is deleted
+Note that as long there is a shared pointer, the object is not deleted!
+
+QWeakPointer:
+-------------
+Can hold a weak reference to a shared pointer. It will not prevent the object from being destroyed, and is simply reset. 
+Equivalent to std::weak_ptr, where lock is equivalent to toStrongRef.
+int *pI = new int;
+QSharedPointer<int> pI1(pI);
+QWeakPointer<int> pI2 = pI1;
+pI1.clear();
+// No shared pointers anymore, pI is deleted
+// To use the shared pointer, we must "lock" it for use:
+QSharedPointer<int> pI2_locked = pI2.toStrongRef();
+Q_ASSERT(pI2_locked.isNull());
+This can be used if you need access to an object that is controlled by another module.
+
+To use a weak pointer, you must convert it to a QSharedPointer. You should never base a decision on the weak pointer 
+being valid. You can only use data() of isNull to determine that the pointer is null.
+
+Generally, to use a weak pointer, you must convert it to a shared pointer since such an operation ensures that the
+object will survive for as long as you are using it. This is equivalent to "locking" the object for access and is the only 
+correct way of using the object pointed to by a weak pointer.
+
+QScopedPointer
+--------------
+The QScopedPointer class stores a pointer to a dynamically allocated object, and deletes it upon destruction.
+Managing heap allocated objects manually is hard and error prone, with the common result that code leaks memory and is
+hard to maintain. QScopedPointer is a small utility class that heavily simplifies this by assigning stack-based memory
+ownership to heap allocations, more generally called resource acquisition is initialization(RAII).
+
+QScopedPointer guarantees that the object pointed to will get deleted when the current scope disappears.
