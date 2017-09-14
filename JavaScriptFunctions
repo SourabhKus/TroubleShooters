@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to display the position of the element "Apple":</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function findWithAttr(array, attr, value) {
+	array.forEach(function(array, index) {
+    	if(array[attr] === value)
+    		console.log("found "+ index);
+        if(array.key === value)
+    		console.log("found "+ index);
+    });
+    
+    for(var i = 0; i < array.length; i += 1) {
+        if(array[i][attr] === value) {
+            return i;
+        }
+    }
+    
+    return -1;
+}
+
+
+function myFunction() {
+    var fruits = [ {key:"Banana", val:1}, {key:"Apple", val:3},
+    			   {key:"Orange", val:2}, {key:"Mango", val:4} ];
+                  
+    fruits.push({key:"Papaya", val:5});
+                  
+    var a = fruits[0].key+"="+fruits[0].val +" "+ findWithAttr(fruits, "key", "Orange");
+    document.getElementById("demo").innerHTML = a;
+}
+</script>
+
+</body>
+</html>
