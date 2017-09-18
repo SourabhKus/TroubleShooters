@@ -13,3 +13,23 @@ How to print QByteArray
     }
     
     qDebug()<<"Implement here : "<<s;
+    
+How to make a QML Component a Singleton
+---------------------------------------------------
+Make a QML file with "pragma Singleton" as "MySingObj.qml"
+pragma Singleton  
+import QtQuick 2.0  
+  
+Item {  
+    readonly property string colourBlue: "blue"  
+    readonly property string colourRed: "red"  
+    readonly property int fontPointSize: 16  
+}  
+Now in CPP
+qmlRegisterSingletonType( QUrl("qrc:/path/MySingObj.qml"), "com.xyz.style", 1, 0, "MyStyle" );
+Now you can use this in QML by 
+///////
+import com.xyz.style 1.0
+
+MyStyle.colourBlue;
+///////
