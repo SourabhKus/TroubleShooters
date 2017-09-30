@@ -1,0 +1,15 @@
+
+1) First clone : git clone --recursive git@github.com:USER/PROJECT.git
+          git clone --recursive git@github.com:asteriaaerospace/MCS3.0.git
+          
+2) Now do below step in each submodule
+a) Set User : git config --global user.email "user.name@xyz.co.in"
+              git config --global user.name "yourName"
+b) git remote rename origin asteria
+c) git remote add yourName git@github.com:you/Fork.git
+
+Now when you run 'git remote -v' it should display
+asteria git@github.com:USER/PROJECT.git (fetch)
+asteria git@github.com:USER/PROJECT.git (push)
+yourName   git@github.com:you/Fork.git (fetch)
+yourName  git@github.com:you/Fork.git (push)
