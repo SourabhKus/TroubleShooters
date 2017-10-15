@@ -36,6 +36,14 @@ function myFunction() {
     var a = fruits[0].key+"="+fruits[0].val +" "+ findWithAttr(fruits, "key", "Orange");
     document.getElementById("demo").innerHTML = a;
 }
+
+// does not do a thing
+// e.cancelBubble = true;
+// does not exist on the passed in event object
+// e.stopPropagation();
+// does not exist on the passed in event object
+// e.preventDefault();
+
 </script>
 
 </body>
