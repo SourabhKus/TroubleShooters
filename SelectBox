@@ -40,6 +40,10 @@ function getVal() {
 	 var x = document.getElementById("hey").selectedIndex;
     var y = document.getElementById("hey").options;
     console.log("Index: " + y[x].index + " is " + y[x].text + ", val = "+y[x].value);
+    
+    for(var i = 0; i < ele.length; i++)
+    	if(ele[i].text === "Loiter Turns")
+    		console.log("found: " + ele[i].text + ", "+ele[i].index);
 }
 
 window.load = getTypeSelection('hey', 'Nav Point');
