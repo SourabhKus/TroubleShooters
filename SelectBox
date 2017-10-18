@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to create a SELECT and an OPTION element.</p>
+
+<button onclick="getVal()">getVal</button>
+
+<script>
+function getTypeSelection(id, selectedVal) {
+    var x = document.createElement("SELECT");
+    x.setAttribute("id", id);
+    document.body.appendChild(x);
+    
+    var t1 = document.createElement("option");
+    t1.setAttribute("value", "NavPoint");
+    t1.appendChild(document.createTextNode("Nav Point"));
+    
+    var t2 = document.createElement("option");
+    t2.setAttribute("value", "LoiterTime");
+    t2.appendChild(document.createTextNode("Loiter Time"));
+    
+    var t3 = document.createElement("option");
+    t3.setAttribute("value", "LoiterTurns");
+    t3.appendChild(document.createTextNode("Loiter Turns"));
+    
+    var t4 = document.createElement("option");
+    t4.setAttribute("value", "LoiterInfinite");
+    t4.appendChild(document.createTextNode("Loiter Infinite"));
+    
+    x.appendChild(t1);
+    x.appendChild(t2);
+    x.appendChild(t3);
+    x.appendChild(t4);
+    
+    x.selectedIndex = 2;
+}
+
+function getVal() {
+	 var x = document.getElementById("hey").selectedIndex;
+    var y = document.getElementById("hey").options;
+    console.log("Index: " + y[x].index + " is " + y[x].text + ", val = "+y[x].value);
+}
+
+window.load = getTypeSelection('hey', 'Nav Point');
+</script>
+
+</body>
+</html>
