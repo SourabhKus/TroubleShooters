@@ -1,0 +1,4 @@
+* QtApplication crashing without any resion, REMOVE data from here 
+  C:\Users\XXX\AppData\Local\cache (should work else)
+  C:\Users\XXX\AppData\Local\QtProject\QtCreator\cache\qmlcache
+  C:\Users\XXX\AppData\Local\Temp
