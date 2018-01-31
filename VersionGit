@@ -1,0 +1,12 @@
+Add in pro
+GIT_VERSION=$$system(git --git-dir $$PWD/.git --work-tree $$PWD describe --always --tags)
+    OR
+GIT_VERSION=$$system(git --work-tree $$PWD describe --always --tags)
+DEFINES += VERSION=\\\"$$GIT_VERSION\\\"
+
+in main.cpp
+#ifdef VERSION
+    QString ver = QString("%1").arg(VERSION);
+    app.setApplicationVersion(ver);
+    qDebug() << ver;
+#endif
