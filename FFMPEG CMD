@@ -1,0 +1,6 @@
+/////////////////CONVERT TO MP3//////////////////////
+echo off
+set filename=%1
+C:\Path_to_ffmpeg\ffmpeg.exe -i %filename% -acodec libmp3lame -ab 128k %filename%.mp3
+PAUSE
+//////////////////////////////////////
