@@ -1,0 +1,16 @@
+
+SET QMAKE_DIR="C:\Qt\Qt5.9.1\5.9.1\msvc2017_64\bin"
+SET VC_DIR="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build"
+
+REM Set up \Microsoft Visual Studio 2013, where <arch> is \c amd64.
+CALL %VC_DIR%"\vcvarsall.bat" amd64
+
+SET PATH=%QMAKE_DIR%;%QMAKE_DIR%\qtbase\bin;%QMAKE_DIR%\gnuwin32\bin;%NSIS_DIR%;%PATH%
+
+qmake -spec win32-msvc -tp vc
+
+-----------------------------------
+Now run same QMake cmd for all submodule and add them one by one in Your MSVC solution by
+
+Solution RClick -> Add -> Existing Project
+
