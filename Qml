@@ -1,0 +1,6 @@
+** How to traverse child of QmlContainer
+
+for(var i = 0; i < containerColumn.children.length; i++) {
+  console.log("=>"+containerColumn.children[i].property);
+  containerColumn.children[i].function();
+}
