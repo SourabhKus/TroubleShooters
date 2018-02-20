@@ -14,6 +14,19 @@ asteria git@github.com:USER/PROJECT.git (push)
 yourName   git@github.com:you/Fork.git (fetch)
 yourName  git@github.com:you/Fork.git (push)
 
+3) Add submodule
+          $ git submodule add https://github.com/chaconinc/DbConnector
+4) Check status
+          $ git status
+          On branch master
+          Your branch is up-to-date with 'origin/master'.
+
+          Changes to be committed:
+          (use "git reset HEAD <file>..." to unstage)
+
+	new file:   .gitmodules
+	new file:   DbConnector
+          
 # Creation of branch
 1) Create the branch on your local machine and switch in this branch :
           $ git checkout -b [name_of_your_new_branch]
