@@ -1,4 +1,4 @@
-
+# Adding subProject
 1) First clone : git clone --recursive git@github.com:USER/PROJECT.git
           git clone --recursive git@github.com:asteriaaerospace/MCS3.0.git
           
@@ -13,3 +13,13 @@ asteria git@github.com:USER/PROJECT.git (fetch)
 asteria git@github.com:USER/PROJECT.git (push)
 yourName   git@github.com:you/Fork.git (fetch)
 yourName  git@github.com:you/Fork.git (push)
+
+# Creation of branch
+1) Create the branch on your local machine and switch in this branch :
+          $ git checkout -b [name_of_your_new_branch]
+2) Change working branch :
+          $ git checkout [name_of_your_new_branch]
+3) Push the branch on github :
+          $ git push origin [name_of_your_new_branch]
+4) You can see all branches created by using :
+          $ git branch
