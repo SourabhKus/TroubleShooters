@@ -36,3 +36,6 @@ yourName  git@github.com:you/Fork.git (push)
           $ git push origin [name_of_your_new_branch]
 4) You can see all branches created by using :
           $ git branch
+	
+# Update subModule
+	git submodule update --recursive --remote
