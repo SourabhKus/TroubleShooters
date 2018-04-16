@@ -41,8 +41,7 @@ yourName  git@github.com:you/Fork.git (push)
 	git submodule update --recursive --remote
 	
 # Generate Private Key of your PC
-```bash
-ssh-keygen
-enter file name
-```
+    ssh-keygen
+    enter file name
+
 Now add this in your account know PC list
