@@ -1,0 +1,6 @@
+
+# Jenkins Start/Stop
+Open Console/Command line --> Go to your Jenkins installation directory. Execute the following commands respectively:
+stop: jenkins.exe stop
+start: jenkins.exe start
+restart: jenkins.exe restart
