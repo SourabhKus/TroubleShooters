@@ -1,0 +1,40 @@
+1. Download and Extract Boost
+2. Run `bootstrap.bat` in CMD
+3. Open generated `project-config.jam` and add path to MSVC 2017 like below
+```
+import option ; 
+ 
+using msvc : 14.1 : "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.12.25827\bin\Hostx64\x64\cl.exe"; 
+ 
+option.set keep-going : false ; 
+```
+4. Open *Developer Command Prompt for VS2017*, Go to boost directory and run `b2 toolset=msvc-14.1 address-model=32`
+
+---------------------------------------------------------
+Boost 1.63 doesn't fully support VS2017, but you can trick it to find VC++2017 compiler:
+
+Run bootstrap.bat in boost directory
+Update the project-config.jam to include: using msvc : 14.0 : <path to x86 or x64 cl.exe>. Should be something like "c:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.24911\bin\HostX64\x64\cl.exe"
+Run "Developer Command Prompt for VS 2017 RC" from Windows Start Menu to boostrap from a shell configured using the x86 vcvars or x64 vcvars.
+Run b2 toolset=msvc-14.0 in that command prompt. For the x64 build, add address-model=64 to the b2 command line.
+UPDATE: Boost 1.64 should support VS2017
+
+Run `x86 Native Tools Command Prompt for VS 2017` or `x64 Native Tools Command Prompt for VS 2017` from Start Menu, than inside command prompt run b2:
+
+```
+32-bit: b2 toolset=msvc-14.1 --build-dir=.x86 --stagedir=stage_x86
+
+64-bit: b2 toolset=msvc-14.1 address-model=64 --build-dir=.x64 --stagedir=stage_x64
+
+Add link=shared to build shared libraries
+
+runtime-link=static for static
+
+````
+
+mt : multi threaded
+d : Add ABI tags, could be used with:
+g : using debug versions of the standard and runtime support libraries.
+s : linking statically to the standard and runtime support libraries.
+and more
+
