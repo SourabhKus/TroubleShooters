@@ -1,6 +1,21 @@
 
 # Jenkins Start/Stop
 Open Console/Command line --> Go to your Jenkins installation directory. Execute the following commands respectively:
-stop: jenkins.exe stop
-start: jenkins.exe start
-restart: jenkins.exe restart
+    stop: jenkins.exe stop
+    start: jenkins.exe start
+    restart: jenkins.exe restart
+
+# Fixed Port for JNPL agent
+    Jenkins->Manage Jenkins-> Configure Global Security 
+    Agents->TCP Port for JNPL agents Make it for a Fixed port : 41523 (better in case of virtual MC)
+    
+# Set Jenkins URL
+    Jenkins->configuration
+    Jenkins Loaction-> Jenkins URL : http://IP:PORT/
+    
+    
+# Adding JNPL client on Windows
+    Run cmd "As Administrator" then run downloaded *.jnpl (otherwise windows will block it and it will not connect)
+    Now it will try to connect on a PORT check and map that port for Master Machine (port Forwarding in Virtual MC)
+    Once it connected in JenkinsSlavce UI click File->Install as a service
+    
