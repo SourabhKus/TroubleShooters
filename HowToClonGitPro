@@ -45,4 +45,6 @@ Now when you run 'git remote -v' it should display
     ssh-keygen
     enter file name
 
-Now add this in your account know PC list
+# Now add this in your account know PC list
+    eval $(ssh-agent -s)
+    ssh-add ~/ sshKey
