@@ -1,0 +1,3 @@
+--remote-debugging-port=XXXX
+
+Add this as command line argument for debbuging webEndineView and run Chrome https:://localhost:XXXX/
