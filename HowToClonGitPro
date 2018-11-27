@@ -48,3 +48,6 @@ Now when you run 'git remote -v' it should display
 # Now add this in your account know PC list
     eval $(ssh-agent -s)
     ssh-add ~/ sshKey
+
+# Send Specific Changes to specific branch
+git push Branch [SSH-Head-commit]:branch
