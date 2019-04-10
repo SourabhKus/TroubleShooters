@@ -13,9 +13,16 @@ Open Console/Command line --> Go to your Jenkins installation directory. Execute
     Jenkins->configuration
     Jenkins Loaction-> Jenkins URL : http://IP:PORT/
     
+# Add node
+   Jenkins->Manage Jenkins-> Manage Nodes
+   
+    
     
 # Adding JNPL client on Windows
     Run cmd "As Administrator" then run downloaded *.jnpl (otherwise windows will block it and it will not connect)
     Now it will try to connect on a PORT check and map that port for Master Machine (port Forwarding in Virtual MC)
     Once it connected in JenkinsSlavce UI click File->Install as a service
     
+# Jenkins Commands
+   serverURL:PORT/restart             for restarting jenkins
+   serverURL:PORT/systemInfo          for getting information about jenkins
