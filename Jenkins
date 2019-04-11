@@ -15,8 +15,6 @@ Open Console/Command line --> Go to your Jenkins installation directory. Execute
     
 # Add node
    Jenkins->Manage Jenkins-> Manage Nodes
-   
-    
     
 # Adding JNPL client on Windows
     Run cmd "As Administrator" then run downloaded *.jnpl (otherwise windows will block it and it will not connect)
@@ -26,3 +24,20 @@ Open Console/Command line --> Go to your Jenkins installation directory. Execute
 # Jenkins Commands
    serverURL:PORT/restart             for restarting jenkins
    serverURL:PORT/systemInfo          for getting information about jenkins
+   
+# Change Jenkins Mount point
+  1) Stop Jenkins : /etc/init.d/jenkins stop
+  2) mkdir Loc
+  3) sudo chown -R jenkins:jenkins Loc
+  4) sudo -u jenkins cp -r /var/lib/jenkins/* Loc/
+  5) Change JENNIKS_HOME inside /etc/default/jenkins : sudo gedit /etc/default/jenkins 
+     find JENKINS_HOME and change path to new Jenkins Loc folder
+  6) Start Jenkins : /etc/init.d/jenkins start 
+  7) In case if you have the error message "Unable to create the home directory ‘/path/to/jenkins/Loc’." 
+     This is most likely a permission problem.
+  8) sudo chown -R jenkins:jenkins root_folder/
+     To get the root_folder you need go to Jenkins home folder and run pwd. This will work in case if you want use other one hdd (not system) for Jenkins Lo.
+     $pwd
+     /media/path/to/jenkins/home
+     In my case the root_folder is media : sudo chown -R jenkins:jenkins /media/
+     
