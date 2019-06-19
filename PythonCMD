@@ -1,0 +1,46 @@
+Mavlink code generator
+
+1: C:\Python37-32\Scripts\pip.exe install pymavlink
+
+
+-----------------------------------------------------
+
+https://pyinstaller.readthedocs.io/en/v3.3.1/usage.html
+--------------------------------------------------------
+
+C:\Python37-32\Scripts>pip
+Fatal error in launcher: Unable to create process using '"c:\users\sourabh\appdata\local\programs\python\python37-32\python.exe"  "C:\Python37-32\Scripts\pip.exe" '
+
+How To Resolved
+----------------
+C:\Python37-32\Scripts> cd ..
+C:\Python37-32>python -m pip install --upgrade pip //This will upgrade pip from 10.0 to 19.1
+
+pip3 install --upgrade PyQt5
+pip3 install pillow
+pip3 install pywin32
+
+How to Install pyinstallere
+---------------------------
+C:\Python37-32>cd Scripts
+C:\Python37-32\Scripts>pip install pyinstaller
+
+
+---------------------------------------
+set PATH=%PATH%;C:\OSGeo4W64\apps\Python37\Scripts;C:\Windows\System32\downlevel;
+
+Now add Python scripts in your system PATH
+------------------------------------------
+set PATH=%PATH%;C:\Python37-32\Scripts;C:\Windows\System32\downlevel;
+
+
+pyinstaller C:\OSGeo4W64\bin\gdal2tiles.py -F -p "C:\OSGeo4W64\apps\Python37\lib\site-packages" --distpath "C:\Users\sourabh\Desktop\Python\bin"
+
+
+execute py3_env
+
+pyinstaller C:\OSGeo4W64\bin\gdal2tiles.py -F -p "C:\OSGeo4W64\apps\Python37\lib\site-packages" -p "C:\Python37-32\Lib\site-packages"  --distpath "C:\Users\sourabh\Desktop\Python\bin"
+
+pyinstaller C:\OSGeo4W64\bin\gdal2tiles.py --clean -D -p "C:\OSGeo4W64\apps\Python37\lib\site-packages" -p "C:\OSGeo4W64\apps\Python37\lib" --hidden-import=tkinter --hidden-import=PyQt4 --distpath "C:\Users\sourabh\Desktop\Python\bin"
+
+pyinstaller C:\Users\sourabh\Desktop\Python\Qt.py --clean -F --distpath "C:\Users\sourabh\Desktop\Python\bin"
