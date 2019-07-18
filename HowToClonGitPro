@@ -40,6 +40,7 @@ Now when you run 'git remote -v' it should display
 	
 # Update subModule
 	git submodule update --recursive --remote
+	git submodule foreach 'git pull asteria master'
 	
 # Generate Private Key of your PC
     ssh-keygen
@@ -50,4 +51,13 @@ Now when you run 'git remote -v' it should display
     ssh-add ~/ sshKey
 
 # Send Specific Changes to specific branch
-git push Branch [SSH-Head-commit]:branch
+    git push Branch [SSH-Head-commit]:branch
+    
+# Git tagging
+  git tag    [To see all tags]
+  git tag -a vX.X.X -m "my version X.X.X"   [to create a new tag]
+  git push origin <tagName>   [for sharing a specific tag]
+  git push origin --tags      [for sharing all tags]
+  git tag -d <tagName>
+  git push origin --delete <tagName>
+  
