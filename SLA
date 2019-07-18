@@ -1,0 +1,10 @@
+
+# Set the matrix for getting video
+--------------------------------------
+Control Panel -> Network & Sharing center -> Change adapter Settings
+1) Click on Ethernet connection Properties -> Internet Protocol Version 4
+	-> Advanced... -> Uncheck Automatic metric and put 2 on the Interface metric -> OK -> OK ->close
+2) Click on WIFI connection Properties -> Internet Protocol Version 4
+	-> Advanced... -> Uncheck Automatic metric and put 1 on the Interface metric -> OK -> OK ->close
+--------------
+
