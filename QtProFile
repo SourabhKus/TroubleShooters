@@ -1,0 +1,27 @@
+greaterThan(QT_MAJOR_VERSION, 4) {
+    QT += widgets
+}
+
+defined(func, type)
+Returns true if func is defined; type must be either test or replace, to match defineTest or defineReplace.
+
+equals(var1, var)
+(also works as isEqual).
+Returns true if var1 is equal to var2 (string comparison).
+
+lessThan(var1, var2)`
+Returns true if var1 is less than var2 (as an integer).
+
+greaterThan(var1, var2)
+Returns true if var1 is greater than var2 (as an integer).
+
+inFile(file, var, val)
+Returns true if a variable var is defined in the specified file. Additionally, it can test to see if it has the requested value.
+
+load(string)
+Something of a cross between include() and CONFIG += [feature]. load(foo) will look for a file called 
+"foo.prf" in the standard feature path, and execute its contents immediately. Features that are 
+contained within CONFIG are executed last, after the ".pro" file has finished processing. 
+Like include(), it will return true if the file was found.
+
+https://wiki.qt.io/Undocumented_QMake
